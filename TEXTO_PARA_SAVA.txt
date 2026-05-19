@@ -1,0 +1,24 @@
+LINK DO GITHUB:
+https://github.com/Bristted/bilhetagem-eletronica-rj
+
+---
+
+TEXTO PARA COLAR NO TRABALHO / SAVA:
+
+Repositório com o código-fonte e instruções de execução:
+https://github.com/Bristted/bilhetagem-eletronica-rj
+
+O projeto analisa a demanda do transporte público no Estado do Rio de Janeiro utilizando dados abertos do Sistema de Bilhetagem Eletrônica (SETRAM/SBE). Foram utilizadas Python, Pandas, NumPy, Matplotlib, Seaborn e Scikit-learn para limpeza dos dados, estatísticas descritivas, distribuição de frequência e regressão linear simples.
+
+Para reproduzir a análise no computador:
+1) Instalar Python 3.11 ou superior (python.org)
+2) Clonar o repositório ou baixar o ZIP (botão Code no GitHub)
+3) No terminal, na pasta do projeto: python -m pip install -r requirements.txt
+4) python baixar_dados_reais.py
+5) python analise_bilhetagem_rj.py
+
+Os gráficos e tabelas são gerados na pasta saida/. Instruções detalhadas no arquivo README.md do repositório.
+
+Fonte dos dados: https://www.dadosabertos.rj.gov.br/dataset/setram_sbe
+
+Autores: Lucas Martins Matos e Gabriel Belo da Silva — Tópicos de Big Data em Python (2026.1).

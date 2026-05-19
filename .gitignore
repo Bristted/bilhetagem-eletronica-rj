@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Dados grandes (baixar com baixar_dados_reais.py)
+dados/publico/*.csv
+dados/publico/*.zip
+dados/consolidado/*.zip
+
+# Opcional: descomente a linha abaixo se NÃO quiser enviar consolidados no GitHub
+# dados/consolidado/*.csv
+
+# Saídas geradas (podem ser recriadas)
+saida/*.png
+
+# Sistema
+.DS_Store
+Thumbs.db
