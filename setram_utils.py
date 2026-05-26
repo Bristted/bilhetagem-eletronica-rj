@@ -1,5 +1,3 @@
-"""Funções compartilhadas: leitura, limpeza e mapeamento dos CSVs SETRAM/SBE."""
-
 from __future__ import annotations
 
 import re
