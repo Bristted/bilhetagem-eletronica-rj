@@ -1,16 +1,3 @@
-"""
-Análise completa — Bilhetagem Eletrônica SETRAM/RJ (projeto extensionista).
-
-Inclui:
-  1) Consolidado mensal por modal (jan–mai/2025)
-  2) Série temporal e subsídios/valores
-  3) Amostra diária com frequência por hora e regressão hora × demanda
-
-Uso:
-  python baixar_dados_reais.py   # baixa arquivos do portal (1ª vez)
-  python analise_bilhetagem_rj.py
-"""
-
 from __future__ import annotations
 
 import sys
@@ -45,7 +32,7 @@ BASE_DIR = Path(__file__).resolve().parent
 DADOS_DIR = BASE_DIR / "dados"
 PASTA_SAIDA = BASE_DIR / "saida"
 RNG_SEED = 42
-MAX_LINHAS_DIARIO = 300_000  # por arquivo diário (evita travar o PC)
+MAX_LINHAS_DIARIO = 300_000
 
 
 def _listar_csvs(pasta: Path, filtro) -> list[Path]:
@@ -134,7 +121,6 @@ def analise_consolidado(df: pd.DataFrame) -> None:
     print(freq_modal)
     freq_modal.to_csv(PASTA_SAIDA / "frequencia_modal_total.csv", encoding="utf-8")
 
-    # Série temporal: transações por mês e modal
     serie = df.groupby([COL_DATA, COL_MODAL])[COL_QTD].sum().reset_index()
     fig, ax = plt.subplots(figsize=(10, 5))
     for modal, grp in serie.groupby(COL_MODAL):
@@ -148,7 +134,6 @@ def analise_consolidado(df: pd.DataFrame) -> None:
     fig.savefig(PASTA_SAIDA / "serie_temporal_modal.png", dpi=150)
     plt.close(fig)
 
-    # Subsídios e valores (último mês disponível ou média do período)
     if COL_SUBSIDIO in df.columns and COL_VALOR_LINHA in df.columns:
         ultimo = df.sort_values(COL_DATA).groupby(COL_MODAL).last().reset_index()
         fig, axes = plt.subplots(1, 2, figsize=(12, 4))
@@ -173,7 +158,6 @@ def analise_consolidado(df: pd.DataFrame) -> None:
             PASTA_SAIDA / "resumo_financeiro_modal.csv", index=False, encoding="utf-8"
         )
 
-    # Regressão valor × quantidade (todos os registros consolidados)
     if COL_VALOR in df.columns:
         modelo, metricas, col_x = regressao_simples(df, COL_VALOR, "valor_transacao")
         fig, ax = plt.subplots(figsize=(7, 5))
@@ -190,7 +174,6 @@ def analise_consolidado(df: pd.DataFrame) -> None:
             PASTA_SAIDA / "metricas_regressao_consolidado.csv", encoding="utf-8"
         )
 
-    # Barras por modal (visão geral)
     fig, ax = plt.subplots(figsize=(8, 4))
     freq_modal.plot(kind="bar", ax=ax, color="steelblue")
     ax.set_title("Distribuição de frequência — transações por modal")
@@ -223,7 +206,6 @@ def analise_diaria(df: pd.DataFrame) -> None:
     fig.savefig(PASTA_SAIDA / "freq_por_hora.png", dpi=150)
     plt.close(fig)
 
-    # Pico por modal e hora
     pico = (
         df.groupby([COL_HORA, COL_MODAL])[COL_QTD]
         .sum()
