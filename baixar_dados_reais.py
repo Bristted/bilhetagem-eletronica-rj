@@ -1,15 +1,3 @@
-"""
-Baixa recursos do dataset SETRAM SBE (dados abertos RJ).
-
-Inclui:
-  - Consolidados mensais 2025 (jan a mai)
-  - Transações diárias públicas (1 semana em maio/2025)
-  - Dicionário de dados (XLSX)
-
-Uso:
-  python baixar_dados_reais.py
-"""
-
 from __future__ import annotations
 
 import json
@@ -25,7 +13,6 @@ DIR_PUBLICO = DADOS_DIR / "publico"
 DIR_DOCS = DADOS_DIR / "documentacao"
 CKAN_API = "https://dadosabertos.rj.gov.br/api/3/action/package_show?id=setram_sbe"
 
-# Dias da semana de amostra (maio/2025) — arquivos diários
 DIAS_PUBLICO = [f"2025_05_{d:02d}" for d in range(1, 8)]
 MESES_CONSOLIDADO = ["01", "02", "03", "04", "05"]
 
