@@ -1,5 +1,3 @@
-"""Verifica se Python e as bibliotecas necessárias estão instaladas."""
-
 from __future__ import annotations
 
 import sys
