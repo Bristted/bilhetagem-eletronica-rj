@@ -46,6 +46,10 @@ python baixar_dados_reais.py
 
 ### 5. Criar pasta chamada SAIDA
 
+```powershell
+Criar pasta SAIDA dentro da pasta.
+```
+
 ### 6. Executar a análise
 
 ```powershell
