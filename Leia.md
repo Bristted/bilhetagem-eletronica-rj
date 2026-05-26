@@ -44,7 +44,9 @@ python baixar_dados_reais.py
 
 > Se o repositório já incluir CSVs em `dados/consolidado/`, a análise mensal roda mesmo sem baixar tudo.
 
-### 5. Executar a análise
+### 4. Criar pasta chamada SAIDA
+
+### 6. Executar a análise
 
 ```powershell
 python analise_bilhetagem_rj.py
