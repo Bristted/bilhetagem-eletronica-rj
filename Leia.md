@@ -44,7 +44,7 @@ python baixar_dados_reais.py
 
 > Se o repositório já incluir CSVs em `dados/consolidado/`, a análise mensal roda mesmo sem baixar tudo.
 
-### 4. Criar pasta chamada SAIDA
+### 5. Criar pasta chamada SAIDA
 
 ### 6. Executar a análise
 
